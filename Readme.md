@@ -181,6 +181,22 @@ co(function* () {
   console.error(err.stack);
 });
 ```
+### co(iterator).then( val => )
+
+Returns a promise that resolves a generator, generator function,
+or any function that returns a generator.
+
+```js
+var fn = function* (foo) {
+  return yield Promise.resolve(foo);
+}
+
+co(fn(true)).then(function (val) {
+  console.log(val);
+}, function (err) {
+  console.error(err.stack);
+});
+```
 
 ### var fn = co.wrap(fn*)
 
